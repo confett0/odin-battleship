@@ -1,6 +1,6 @@
-import {}
+import Ship from "./ship";
 
-class Gameboard {
+export class Gameboard {
     constructor(player) {
         this.player = player;
         board = Array(10).fill().map(() => 
@@ -12,5 +12,3 @@ class Gameboard {
         
     }
 }
-
-module.exports = Gameboard;

@@ -1,1 +1,1 @@
-const Ship = require('../gameboard');
+import { Gameboard } from "../gameboard";
