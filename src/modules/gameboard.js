@@ -47,4 +47,9 @@ export class Gameboard {
             }
         }
     }
+
+    // Gameboards should be able to report whether or not all of their ships have been sunk.
+    allSunk() {
+        return this.ships.every(ship => ship.sunk === true);
+    }
 }
