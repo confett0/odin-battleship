@@ -1,4 +1,5 @@
 import { Gameboard } from "../gameboard";
+import { Ship } from "../ship";
 
 describe('Gameboard', () => {
 
@@ -18,6 +19,14 @@ describe('Gameboard', () => {
         const gameboard = new Gameboard();
         gameboard.receiveAttack([3,7]);
         expect(gameboard.board[3][7].isHit).toBe(true);
+      });
+
+      it('should increment the hit count of the correct ship', () => {
+        const gameboard = new Gameboard();
+        gameboard.placeShip([3,3],[3,5], "Submarine");
+        const placedShip = gameboard.ships.find((ship) => ship.name === "Submarine");
+        gameboard.receiveAttack([3,3]);
+        expect(placedShip.hitsReceived).toBe(1);
       });
     
 
