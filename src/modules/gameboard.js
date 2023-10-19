@@ -3,25 +3,30 @@ import { Ship } from "./ship";
 export class Gameboard {
     constructor(player) {
         this.player = player;
-        this.board = Array(10).fill().map(() => 
-               Array(10).fill({hasShip: false, isHit: false}));
+        this.board = Array(10).fill().map(() =>
+            Array(10).fill({ hasShip: false, isHit: false }));
     }
 
-    placeShip([x,y],[a,b]) {
+    placeShip([x, y], [a, b]) {
         if (x !== a && y !== b) return;
 
-        const shipLength = Math.max((Math.abs(x - a)),(Math.abs(y - b))) + 1;
+        const shipLength = Math.max((Math.abs(x - a)), (Math.abs(y - b))) + 1;
         const ship = new Ship(shipLength);
 
         if (y === b) {
             for (let i = x; i <= shipLength; i++) {
-            this.board[i][y].hasShip = true;
+                this.board[i][y].hasShip = true;
             }
         }
         if (x === a) {
             for (let i = y; i <= shipLength; i++) {
-            this.board[x][i].hasShip = true;
+                this.board[x][i].hasShip = true;
             }
         }
+    }
+
+    receiveAttack([x, y]) {
+        // determines whether the attack hit a ship and then sends the ‘hit’ function to the correct ship, or records the coordinates of the missed shot
+        this.board[x][y].isHit = true;
     }
 }
