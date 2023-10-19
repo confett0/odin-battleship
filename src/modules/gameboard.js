@@ -8,23 +8,24 @@ export class Gameboard {
         this.ships = [];
     }
 
-    placeShip([x, y], [a, b], shipName) {
-        if (x !== a && y !== b) return;
+    placeShip(startCoords, endCoords, shipName) {
+        if (startCoords[0] !== endCoords[0] && startCoords[1] !== endCoords[1]) return;
 
-        const shipLength = Math.max((Math.abs(x - a)), (Math.abs(y - b))) + 1;
+        const shipLength = Math.max((Math.abs(startCoords[0] - endCoords[0])), (Math.abs(startCoords[1] - endCoords[1]))) + 1;
         const ship = new Ship(shipLength, shipName);
         this.ships.push(ship);
 
-        if (y === b) {
-            for (let i = x; i <= shipLength; i++) {
-                this.board[i][y].ship = ship.name;
+        if (startCoords[1] === endCoords[1]) {
+            for (let i = startCoords[0]; i <= shipLength; i++) {
+                this.board[i][startCoords[1]].ship = ship.name;
             }
         }
-        if (x === a) {
-            for (let i = y; i <= shipLength; i++) {
-                this.board[x][i].ship = ship.name;
+        if (startCoords[0] === endCoords[0]) {
+            for (let i = startCoords[1]; i <= shipLength; i++) {
+                this.board[startCoords[0]][i].ship = ship.name;
             }
         }
+        return ship;
     }
 
     receiveAttack([x, y]) {
