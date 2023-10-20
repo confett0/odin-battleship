@@ -1,8 +1,9 @@
 import { Ship } from "./ship";
+import { Player } from "./player";
 
 export class Gameboard {
-    constructor(player) {
-        this.player = player;
+    constructor(playerName) {
+        this.player = new Player(playerName);
         this.board = Array(10).fill().map(() =>
             Array(10).fill({ ship: null, isHit: false }));
         this.ships = [];
