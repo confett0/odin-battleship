@@ -1,5 +1,6 @@
 import { Ship } from "./ship";
 import { Player } from "./player";
+import { getRandomCoords } from "./helper";
 
 export class Gameboard {
     constructor(playerName) {
@@ -9,23 +10,26 @@ export class Gameboard {
         this.ships = [];
     }
 
-    placeShip(startCoords, endCoords, shipName) {
-        if (startCoords[0] !== endCoords[0] && startCoords[1] !== endCoords[1]) return;
-
-        const shipLength = Math.max((Math.abs(startCoords[0] - endCoords[0])), (Math.abs(startCoords[1] - endCoords[1]))) + 1;
-        const ship = new Ship(shipLength, shipName);
+    createShip(name, length) {
+        const ship = new Ship(length, name);
         this.ships.push(ship);
+        return ship;
+    }
 
-        if (startCoords[1] === endCoords[1]) {
-            for (let i = startCoords[0]; i <= shipLength; i++) {
+    placeShip(ship, startCoords, orientation) {
+        
+        if (orientation === "horizontal") {
+            for (let i = startCoords[0]; i <= ship.length; i++) {
                 this.board[i][startCoords[1]].ship = ship.name;
             }
         }
-        if (startCoords[0] === endCoords[0]) {
-            for (let i = startCoords[1]; i <= shipLength; i++) {
+
+        if (orientation === "vertical") {
+            for (let i = startCoords[1]; i <= ship.length; i++) {
                 this.board[startCoords[0]][i].ship = ship.name;
             }
         }
+
         return ship;
     }
 
@@ -55,6 +59,6 @@ export class Gameboard {
     }
 
     autoPopulate() {
-        const getRandomNumber = () => Math.floor(Math.random() * 10);
+        const startCoords = getRandomCoords();
     }
 }

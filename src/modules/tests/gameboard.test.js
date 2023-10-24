@@ -5,13 +5,15 @@ describe('Gameboard', () => {
 
     it('should place ship in the given coordinates horizontally', () => {
       const gameboard = new Gameboard();
-      gameboard.placeShip([0,0],[3,0], "Battleship");
+      const battleship = gameboard.createShip("Battleship", 4);
+      gameboard.placeShip(battleship, [0,0], "horizontal");
       expect(gameboard.board[2][0].ship).toBe("Battleship");
     });
 
     it('should place ship in the given coordinates vertically', () => {
         const gameboard = new Gameboard();
-        gameboard.placeShip([2,2],[2,4], "Destroyer");
+        const destroyer = gameboard.createShip("Destroyer", 3);
+        gameboard.placeShip(destroyer, [2,2], "vertical");
         expect(gameboard.board[2][3].ship).toBe("Destroyer");
       });
     
@@ -23,10 +25,10 @@ describe('Gameboard', () => {
 
       it('should increment the hit count of the correct ship', () => {
         const gameboard = new Gameboard();
-        gameboard.placeShip([3,3],[3,5], "Submarine");
-        const placedShip = gameboard.ships.find((ship) => ship.name === "Submarine");
+        const submarine = gameboard.createShip("Submarine", 3)
+        gameboard.placeShip(submarine, [3,3], "horizontal");
         gameboard.receiveAttack([3,3]);
-        expect(placedShip.hitsReceived).toBe(1);
+        expect(submarine.hitsReceived).toBe(1);
       });
     
 
