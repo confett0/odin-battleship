@@ -26,15 +26,26 @@ export class Gameboard {
 
   placeShip(ship, startCoords, orientation) {
 
+    const isOccupied = (x, y) => {
+        if (x < 0 || x >= 10 || y < 0 || y >= 10) {
+          return true; // Out of bounds is considered occupied
+        }
+        return this.board[x][y].ship !== null;
+      };
+
     if (orientation === "horizontal") {
       for (let i = startCoords[0]; i <= ship.length; i++) {
+        if (!isOccupied(i, startCoords[1])) {
         this.board[i][startCoords[1]].ship = ship.name;
+        }
       }
     }
 
     if (orientation === "vertical") {
       for (let i = startCoords[1]; i <= ship.length; i++) {
+        if (!isOccupied(startCoords[0], i)) {
         this.board[startCoords[0]][i].ship = ship.name;
+        }
       }
     }
 
