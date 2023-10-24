@@ -53,4 +53,8 @@ export class Gameboard {
     allSunk() {
         return this.ships.every(ship => ship.sunk === true);
     }
+
+    autoPopulate() {
+        const getRandomNumber = () => Math.floor(Math.random() * 10);
+    }
 }

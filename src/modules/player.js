@@ -1,3 +1,5 @@
+import { getRandomCoords } from "./helper";
+
 export class Player {
     constructor(name) {
         this.name = name;
@@ -12,12 +14,10 @@ export class Computer extends Player {
         this.moves = [];
     }
     attack() {
-        const getRandomNumber = () => Math.floor(Math.random() * 10);
-        const a = getRandomNumber();
-        const b = getRandomNumber();
-        if (!this.moves.includes([a, b])) {
-            this.moves.push([a,b]);
-            return [a, b]
+        const randomCoords = getRandomCoords();
+        if (!this.moves.includes(randomCoords)) {
+            this.moves.push(randomCoords);
+            return randomCoords;
         } else {
             this.attack();
         }
