@@ -1,8 +1,4 @@
 import './style.css';
-import { Gameboard } from './modules/gameboard';
+import { playGame } from './modules/game';
 
-const gameboard = new Gameboard("player1");
-
-gameboard.autoPopulateBoard();
-
-console.log(gameboard.board);
+playGame();

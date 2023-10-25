@@ -1,10 +1,8 @@
 import { Ship } from "./ship";
-import { Player } from "./player";
 import { getRandomCoords, randomOrientation } from "./helper";
 
 export class Gameboard {
-  constructor(playerName) {
-    this.player = new Player(playerName);
+  constructor() {
     this.board = Array(10)
     .fill()
     .map(() => Array(10).fill(null));
