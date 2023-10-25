@@ -6,8 +6,14 @@ export class Gameboard {
   constructor(playerName) {
     this.player = new Player(playerName);
     this.board = Array(10)
-      .fill()
-      .map(() => Array(10).fill({ ship: null, isHit: false }));
+    .fill()
+    .map(() => Array(10).fill(null));
+  
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      this.board[i][j] = { ship: null, isHit: false };
+    }
+  }
     this.shipList = [
       { name: "Carrier", length: 5 },
       { name: "Battleship", length: 4 },
@@ -33,18 +39,25 @@ export class Gameboard {
         return this.board[x][y].ship !== null;
       };
 
+    const [x,y] = startCoords;
+
     if (orientation === "horizontal") {
-      for (let i = startCoords[0]; i <= ship.length; i++) {
-        if (!isOccupied(i, startCoords[1])) {
-        this.board[i][startCoords[1]].ship = ship.name;
+        for (let i = x; i < x + ship.length; i++) {
+        if (!isOccupied(i, y)) {
+          console.log(i,y);
+        this.board[i][y].ship = ship.name;
+        } else {
+            return;
         }
       }
     }
 
     if (orientation === "vertical") {
-      for (let i = startCoords[1]; i <= ship.length; i++) {
-        if (!isOccupied(startCoords[0], i)) {
-        this.board[startCoords[0]][i].ship = ship.name;
+      for (let i = y; i < y + ship.length; i++) {
+        if (!isOccupied(x, i)) {
+        this.board[x][i].ship = ship.name;
+        } else {
+            return;
         }
       }
     }
@@ -77,13 +90,32 @@ export class Gameboard {
     return this.ships.every((ship) => ship.sunk === true);
   }
 
-  autoPopulate() {
-    this.shipList.map(ship => this.createShip(ship));
-    const startCoords = getRandomCoords();
-    const orientation = randomOrientation();
+  autoPopulateBoard() {
+      
+      const autoPlaceShip = (ships, index) => {
+        if (index >= ships.length) {
+          // All ships have been placed, exit recursion
+          return;
+        }
+      
+        const ship = ships[index];
+        const startCoords = getRandomCoords();
+        const orientation = randomOrientation();
+      
+        // Try to place the ship
+        const result = this.placeShip(ship, startCoords, orientation);
+      
+        if (result) {
+          // If the placement was successful, move on to the next ship
+          autoPlaceShip(ships, index + 1);
+        } else {
+          // If placement failed, try again for the same ship
+          autoPlaceShip(ships, index);
+        }
+      }
 
-    for (let i = 0; i < this.ships.length; i++) {
-        
-    }
+      this.shipList.forEach((ship) => this.createShip(ship.name, ship.length));
+        autoPlaceShip(this.ships, 0); // Start placing ships with the first ship in the list
+      
   }
 }

@@ -30,6 +30,5 @@ describe('Gameboard', () => {
         gameboard.receiveAttack([3,3]);
         expect(submarine.hitsReceived).toBe(1);
       });
-    
 
   });
