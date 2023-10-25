@@ -43,21 +43,23 @@ export class Gameboard {
 
     if (orientation === "horizontal") {
         for (let i = x; i < x + ship.length; i++) {
-        if (!isOccupied(i, y)) {
-        this.board[i][y].ship = ship.name;
-        } else {
+        if (isOccupied(i, y)) {
             return;
         }
+      }
+      for (let i = x; i < x + ship.length; i++) {
+        this.board[i][y].ship = ship.name;
       }
     }
 
     if (orientation === "vertical") {
       for (let i = y; i < y + ship.length; i++) {
-        if (!isOccupied(x, i)) {
-        this.board[x][i].ship = ship.name;
-        } else {
+        if (isOccupied(x, i)) {
             return;
         }
+      }
+      for (let i = y; i < y + ship.length; i++) {
+        this.board[x][i].ship = ship.name;
       }
     }
 
