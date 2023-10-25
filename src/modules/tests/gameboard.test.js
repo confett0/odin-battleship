@@ -10,6 +10,13 @@ describe('Gameboard', () => {
       expect(gameboard.board[2][0].ship).toBe("Battleship");
     });
 
+    it('should not place ship in the wrong coordinates', () => {
+      const gameboard = new Gameboard();
+      const battleship = gameboard.createShip("Battleship", 4);
+      gameboard.placeShip(battleship, [0,0], "horizontal");
+      expect(gameboard.board[4][0].ship).toBe(null);
+    });
+
     it('should place ship in the given coordinates vertically', () => {
         const gameboard = new Gameboard();
         const destroyer = gameboard.createShip("Destroyer", 3);

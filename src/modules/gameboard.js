@@ -44,7 +44,6 @@ export class Gameboard {
     if (orientation === "horizontal") {
         for (let i = x; i < x + ship.length; i++) {
         if (!isOccupied(i, y)) {
-          console.log(i,y);
         this.board[i][y].ship = ship.name;
         } else {
             return;
