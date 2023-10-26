@@ -6,8 +6,6 @@ export class Player {
         this.name = name;
         this.gameboard = new Gameboard();
     }
-
-    // turn ?
 }
 
 export class Computer extends Player {

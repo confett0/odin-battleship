@@ -1,11 +1,18 @@
 import { Player, Computer } from "./player";
 
-export const playGame = () => {
-    const player = new Player("player");
-    const computer = new Computer("computer");
-    player.gameboard.autoPopulateBoard();
-    computer.gameboard.autoPopulateBoard();
-    console.log(player.gameboard.board);
-    console.log(computer.gameboard.board);
+export const game = {
+    
+    player: new Player("player"),
+    computer: new Computer("computer"),
+
+    init() {
+        this.player.gameboard.autoPopulateBoard();
+        this.computer.gameboard.autoPopulateBoard();
+    },
+
+    playRound(coord) {
+        this.computer.gameboard.receiveAttack(coord);
+        this.computer.attack();
+    }
 
 }
