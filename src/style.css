@@ -19,6 +19,10 @@
     font-style: normal;
   }
 
+:root {
+    --red: #E74460;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -36,9 +40,18 @@ body {
 
 header {
     height: 130px;
-    width: min(1000px, 100vh);
+    padding: 20px 0;
+    width: min(1200px, 100vh);
+}
+
+.logo {
+    color: var(--red);
+    font-family: 'Inter Light';
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 main {
-    max-width: 1000px;
+    max-width: 1200px;
 }
