@@ -26,17 +26,19 @@
 }
 
 body {
+    align-items: center;
+    background: #69D2E7 url("images/header.png") no-repeat top center;
     display: flex;
     font-family: "Inter Regular";
     flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
-    background: url("images/header.png") no-repeat center;
     height: 130px;
+    width: min(1000px, 100vh);
 }
 
 main {
-    background-color: #69D2E7;
-    min-height: calc(100vh - 130px);
+    max-width: 1000px;
 }
