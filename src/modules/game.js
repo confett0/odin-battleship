@@ -12,7 +12,13 @@ export const game = {
 
     playRound(coord) {
         this.computer.gameboard.receiveAttack(coord);
-        this.computer.attack();
+        setTimeout(this.computer.attack(), 1000);
+    }
+
+    checkWinner() {
+        if (this.computer.gameboard.allSunk() || this.player.gameboard.allSunk()) {
+            // end game
+        }
     }
 
 }
