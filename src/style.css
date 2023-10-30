@@ -74,3 +74,12 @@ main {
     border-radius: 20%;
     box-shadow: 1px 0px 0px rgba(0,0,0,1)
 }
+
+.has-ship {
+    background: #7BA0B0;
+}
+
+.computer-board .cell:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}

@@ -1,4 +1,5 @@
 import { Player, Computer } from "./player";
+import { displayShips } from "./ui";
 
 export const game = {
     
@@ -8,6 +9,7 @@ export const game = {
     init() {
         this.player.gameboard.autoPopulateBoard();
         this.computer.gameboard.autoPopulateBoard();
+        displayShips(this.player.gameboard);
     },
 
     playRound(coord) {
@@ -16,10 +18,10 @@ export const game = {
         setTimeout(this.player.gameboard.receiveAttack(computerMove), 1000);
     }
 
-    checkWinner() {
+    /* checkWinner() {
         if (this.computer.gameboard.allSunk() || this.player.gameboard.allSunk()) {
             // end game
         }
-    }
+    }*/
 
 }
