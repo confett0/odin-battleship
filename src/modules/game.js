@@ -12,7 +12,8 @@ export const game = {
 
     playRound(coord) {
         this.computer.gameboard.receiveAttack(coord);
-        setTimeout(this.computer.attack(), 1000);
+        const computerMove = this.computer.attack();
+        setTimeout(this.player.gameboard.receiveAttack(computerMove), 1000);
     }
 
     checkWinner() {
