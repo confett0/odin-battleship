@@ -54,10 +54,23 @@ header {
 
 main {
     display: flex;
+    gap: 100px;
+    justify-content: space-evenly;
     max-width: 1200px;
+    padding: 30px;
 }
 
 .gameboard {
     display: grid;
+    gap: 4px;
     grid-template-columns: repeat(10, 1fr);
+    height: 450px;
+    width: 450px;
+}
+
+.cell {
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 20%;
+    box-shadow: 1px 0px 0px rgba(0,0,0,1)
 }

@@ -3,6 +3,7 @@ export const createBoardCells = (gameboard) => {
         for (let j = 0; j < 10; j ++) {
            const cell = document.createElement("div");
            cell.setAttribute("id", `${i},${j}`);
+           cell.setAttribute("class", "cell");
            gameboard.appendChild(cell);
         }
     }
