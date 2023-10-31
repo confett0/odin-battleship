@@ -76,6 +76,11 @@ main {
     box-shadow: 1px 0px 0px rgba(0, 0, 0, 1)
 }
 
+.computer-board .cell:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
 .has-ship {
     background: var(--grey);
 }
@@ -86,9 +91,4 @@ main {
 
 .hit {
     background: url("images/hit.png") var(--grey) no-repeat center;
-}
-
-.computer-board .cell:hover {
-    background-color: #ddd;
-    cursor: pointer;
 }

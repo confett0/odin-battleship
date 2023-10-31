@@ -10,11 +10,11 @@ export const game = {
         this.player.gameboard.autoPopulateBoard();
         this.computer.gameboard.autoPopulateBoard();
         displayShips(this.player.gameboard);
-        this.player.gameboard.receiveAttack(0,0);
-        this.player.gameboard.receiveAttack(5,5);
-        this.computer.gameboard.receiveAttack(0,0);
-        this.computer.gameboard.receiveAttack(5,5);
-        updateBoards(this.player);
+        // this.player.gameboard.receiveAttack(0,0);
+       // this.player.gameboard.receiveAttack(5,5);
+        this.computer.gameboard.receiveAttack(0,1);
+        this.computer.gameboard.receiveAttack(4,5);
+       // updateBoards(this.player);
         updateBoards(this.computer);
     },
 

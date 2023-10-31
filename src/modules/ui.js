@@ -22,6 +22,7 @@ export const displayShips = (gameboard) => {
 export const updateBoards = (player) => {
     for (const missedCell of player.gameboard.missedCells) {
         console.log(missedCell);
+        console.log(player.name);
         document.querySelectorAll(`.${player.name}-board [data-coord="${missedCell}"]`).forEach(cell => {
             cell.classList.add("missed");
          });

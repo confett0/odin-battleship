@@ -9,8 +9,9 @@ export class Player {
 }
 
 export class Computer extends Player {
-    constructor() {
+    constructor(name) {
         super();
+        this.name = name;
         this.moves = [];
     }
     attack() {
