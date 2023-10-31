@@ -1,5 +1,4 @@
 import { Gameboard } from "../gameboard";
-import { Ship } from "../ship";
 
 describe('Gameboard', () => {
 
@@ -26,7 +25,7 @@ describe('Gameboard', () => {
     
       it('should records the coordinates of a missed shot', () => {
         const gameboard = new Gameboard();
-        gameboard.receiveAttack([3,7]);
+        gameboard.receiveAttack(3,7);
         expect(gameboard.board[3][7].isHit).toBe(true);
       });
 
@@ -34,7 +33,7 @@ describe('Gameboard', () => {
         const gameboard = new Gameboard();
         const submarine = gameboard.createShip("Submarine", 3)
         gameboard.placeShip(submarine, [3,3], "horizontal");
-        gameboard.receiveAttack([3,3]);
+        gameboard.receiveAttack(3,3);
         expect(submarine.hitsReceived).toBe(1);
       });
 

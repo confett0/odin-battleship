@@ -21,6 +21,8 @@ export class Gameboard {
     ];
     this.ships = [];
     this.occupiedCells = [];
+    this.hitCells = [];
+    this.missedCells = [];
   }
 
   createShip(name, length) {
@@ -67,7 +69,7 @@ export class Gameboard {
     return ship;
   }
 
-  receiveAttack([x, y]) {
+  receiveAttack(x, y) {
     if (this.board[x][y].isHit) {
       return;
     }
@@ -83,6 +85,9 @@ export class Gameboard {
       // If a ship is found, increment its hit count
       if (ship) {
         ship.hit();
+        this.hitCells.push([x,y]);
+      } else {
+        this.missedCells.push([x,y]);
       }
     }
   }
