@@ -3,24 +3,25 @@
     src: url('./fonts/Inter-Regular.ttf');
     font-weight: 400;
     font-style: normal;
-  }
+}
 
 @font-face {
     font-family: 'Inter Semibold';
     src: url('./fonts/Inter-SemiBold.ttf');
     font-weight: 600;
     font-style: normal;
-  }
+}
 
 @font-face {
     font-family: 'Inter Light';
     src: url('./fonts/Inter-Light.ttf');
     font-weight: 300;
     font-style: normal;
-  }
+}
 
 :root {
     --red: #E74460;
+    --grey: #7BA0B0;
 }
 
 * {
@@ -72,11 +73,19 @@ main {
     background: #fff;
     border: 2px solid #000;
     border-radius: 20%;
-    box-shadow: 1px 0px 0px rgba(0,0,0,1)
+    box-shadow: 1px 0px 0px rgba(0, 0, 0, 1)
 }
 
 .has-ship {
-    background: #7BA0B0;
+    background: var(--grey);
+}
+
+.missed {
+    background: url("images/missed.png") var(--red) no-repeat center;
+}
+
+.hit {
+    background: url("images/hit.png") var(--grey) no-repeat center;
 }
 
 .computer-board .cell:hover {
