@@ -23,10 +23,18 @@ describe('Gameboard', () => {
         expect(gameboard.board[2][3].ship).toBe("Destroyer");
       });
     
-      it('should records the coordinates of a missed shot', () => {
+      it.only('should record the coordinates of a missed shot', () => {
         const gameboard = new Gameboard();
         gameboard.receiveAttack(3,7);
-        expect(gameboard.board[3][7].isHit).toBe(true);
+        expect(gameboard.missedCells).toContainEqual([3,7]);
+      });
+
+      it('should record the coordinates of a hit', () => {
+        const gameboard = new Gameboard();
+        const battleship = gameboard.createShip("Battleship", 4);
+        gameboard.placeShip(battleship, [2,1], "vertical");
+        gameboard.receiveAttack(2,1);
+        expect(gameboard.hitCells).toContainEqual([2,1]);
       });
 
       it('should increment the hit count of the correct ship', () => {

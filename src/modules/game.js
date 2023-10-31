@@ -1,5 +1,5 @@
 import { Player, Computer } from "./player";
-import { displayShips } from "./ui";
+import { displayShips, updateBoards } from "./ui";
 
 export const game = {
     
@@ -10,6 +10,12 @@ export const game = {
         this.player.gameboard.autoPopulateBoard();
         this.computer.gameboard.autoPopulateBoard();
         displayShips(this.player.gameboard);
+        this.player.gameboard.receiveAttack(0,0);
+        this.player.gameboard.receiveAttack(5,5);
+        this.computer.gameboard.receiveAttack(0,0);
+        this.computer.gameboard.receiveAttack(5,5);
+        updateBoards(this.player);
+        updateBoards(this.computer);
     },
 
     playRound(coord) {

@@ -9,7 +9,7 @@ export class Gameboard {
   
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
-      this.board[i][j] = { ship: null, isHit: false };
+      this.board[i][j] = { ship: null };
     }
   }
     this.shipList = [
@@ -70,11 +70,9 @@ export class Gameboard {
   }
 
   receiveAttack(x, y) {
-    if (this.board[x][y].isHit) {
+    if (this.missedCells.includes([x,y]) || this.hitCells.includes([x,y])) {
       return;
     }
-
-    this.board[x][y].isHit = true;
 
     const shipName = this.board[x][y].ship;
 
@@ -86,9 +84,9 @@ export class Gameboard {
       if (ship) {
         ship.hit();
         this.hitCells.push([x,y]);
-      } else {
-        this.missedCells.push([x,y]);
       }
+    } else {
+      this.missedCells.push([x,y]);
     }
   }
 

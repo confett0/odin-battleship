@@ -19,4 +19,19 @@ export const displayShips = (gameboard) => {
     }
 }
 
+export const updateBoards = (player) => {
+    for (const missedCell of player.gameboard.missedCells) {
+        console.log(missedCell);
+        document.querySelectorAll(`.${player.name}-board [data-coord="${missedCell}"]`).forEach(cell => {
+            cell.classList.add("missed");
+         });
+     }
+     for (const hitCell of player.gameboard.hitCells) {
+        console.log(hitCell);
+        document.querySelectorAll(`.${player.name}-board [data-coord="${hitCell}"]`).forEach(cell => {
+            cell.classList.add("hit");
+         });
+     }
+}
+
 
