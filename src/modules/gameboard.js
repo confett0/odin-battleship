@@ -69,11 +69,12 @@ export class Gameboard {
     return ship;
   }
 
-  receiveAttack(x, y) {
+  receiveAttack([x, y]) {
+    
     if (this.missedCells.includes([x,y]) || this.hitCells.includes([x,y])) {
       return;
     }
-
+    
     const shipName = this.board[x][y].ship;
 
     if (shipName !== null) {

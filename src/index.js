@@ -10,7 +10,9 @@ game.init();
 const computerGameboard = document.querySelector(".computer-board");
 computerGameboard.addEventListener("click", (e) => {
     if (e.target.className === "cell") {
-        console.log(e.target.dataset.coord);
+        const x = +e.target.dataset.coordX;
+        const y = +e.target.dataset.coordY;
+        game.playRound([x,y]);
     }
 })
 

@@ -13,8 +13,9 @@ export const game = {
     },
 
     playRound(coord) {
-        this.computer.gameboard.receiveAttack(coord);
-        //const computerMove = this.computer.attack();
+       this.computer.gameboard.receiveAttack(coord);
+       updateBoards(this.computer);
+        // const computerMove = this.computer.attack();
        // setTimeout(this.player.gameboard.receiveAttack(computerMove), 1000);
     }
 
