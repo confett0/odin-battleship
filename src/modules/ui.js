@@ -62,7 +62,11 @@ export const updateBoards = (player) => {
   }
 };
 
-export const displayMessages = (message) => {
+export const displayMessages = (message, player) => {
     const messageBoard = document.querySelector(".message-board");
-    messageBoard.innerText = message;
+    if (player === "player") {
+    messageBoard.innerText = `You fire into enemy waters... ${message}`;
+  } else if (player === "computer") {
+    messageBoard.innerText = `The enemy fires into your waters... ${message}`;
+  }
 }

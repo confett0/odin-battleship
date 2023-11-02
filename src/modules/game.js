@@ -16,13 +16,17 @@ export const game = {
   playRound(coord) {
     const playerMove = this.computer.gameboard.receiveAttack(coord);
     updateBoards(this.computer);
-    displayMessages(playerMove);
+    displayMessages(playerMove, "player");
     const computerChoice = this.computer.attack();
     setTimeout(() => {
       const computerMove = game.player.gameboard.receiveAttack(computerChoice);
       updateBoards(game.player);
-      displayMessages(computerMove);
-    }, 1000);
+      displayMessages(computerMove, "computer");
+    }, 1500);
+    const winner = this.checkWinner();
+    if (winner) {
+      console.log(winner);
+    }
   },
 
   checkWinner() {
