@@ -23,9 +23,11 @@ export const game = {
     }, 1000);
   },
 
-  /* checkWinner() {
-        if (this.computer.gameboard.allSunk() || this.player.gameboard.allSunk()) {
-            // end game
+  checkWinner() {
+        if (this.computer.gameboard.allSunk()) {
+          return this.player;
+        } else if (this.player.gameboard.allSunk()) {
+            return this.computer;
         }
-    }*/
+    }
 };
