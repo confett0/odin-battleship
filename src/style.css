@@ -76,7 +76,7 @@ main {
     box-shadow: 1px 0px 0px rgba(0, 0, 0, 1)
 }
 
-.computer-board .cell:hover {
+.computer-board .cell:not(.missed, .hit):hover {
     background-color: #ddd;
     cursor: pointer;
 }
