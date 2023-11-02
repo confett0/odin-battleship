@@ -1,5 +1,5 @@
 import { Player, Computer } from "./player";
-import { displayGameboards, displayShips, addEventListeners, updateBoards } from "./ui";
+import { displayGameboards, displayShips, addEventListeners, updateBoards, displayMessages } from "./ui";
 
 export const game = {
   player: new Player("player"),
@@ -14,12 +14,14 @@ export const game = {
   },
 
   playRound(coord) {
-    this.computer.gameboard.receiveAttack(coord);
+    const playerMove = this.computer.gameboard.receiveAttack(coord);
     updateBoards(this.computer);
-    const computerMove = this.computer.attack();
+    displayMessages(playerMove);
+    const computerChoice = this.computer.attack();
     setTimeout(() => {
-      game.player.gameboard.receiveAttack(computerMove);
+      const computerMove = game.player.gameboard.receiveAttack(computerChoice);
       updateBoards(game.player);
+      displayMessages(computerMove);
     }, 1000);
   },
 

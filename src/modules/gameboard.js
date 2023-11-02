@@ -85,9 +85,15 @@ export class Gameboard {
       if (ship) {
         ship.hit();
         this.hitCells.push([x,y]);
+        if (ship.sunk) {
+          return `${ship.name} is sunk`;
+        } else {
+          return "It's a hit";
+        }
       }
     } else {
       this.missedCells.push([x,y]);
+      return "It's a miss";
     }
   }
 

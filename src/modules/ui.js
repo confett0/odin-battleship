@@ -61,3 +61,8 @@ export const updateBoards = (player) => {
       });
   }
 };
+
+export const displayMessages = (message) => {
+    const messageBoard = document.querySelector(".message-board");
+    messageBoard.innerText = message;
+}
