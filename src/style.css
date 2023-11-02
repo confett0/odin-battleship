@@ -43,7 +43,7 @@ body {
 header {
     height: 130px;
     padding: 20px 0;
-    width: min(1200px, 100vh);
+    width: min(1000px, 100vw);
 }
 
 .logo {
