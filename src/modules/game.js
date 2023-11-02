@@ -1,14 +1,16 @@
 import { Player, Computer } from "./player";
-import { displayShips, updateBoards } from "./ui";
+import { displayGameboards, displayShips, addEventListeners, updateBoards } from "./ui";
 
 export const game = {
   player: new Player("player"),
   computer: new Computer("computer"),
 
   init() {
+    displayGameboards();
     this.player.gameboard.autoPopulateBoard();
     this.computer.gameboard.autoPopulateBoard();
     displayShips(this.player.gameboard);
+    addEventListeners();
   },
 
   playRound(coord) {

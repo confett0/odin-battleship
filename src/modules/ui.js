@@ -1,6 +1,7 @@
-import { Gameboard } from "./gameboard";
+// import { Gameboard } from "./gameboard";
+import { game } from "./game";
 
-export const createBoardCells = (gameboard) => {
+const createBoardCells = (gameboard) => {
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
       const cell = document.createElement("div");
@@ -11,6 +12,11 @@ export const createBoardCells = (gameboard) => {
     }
   }
 };
+
+export const displayGameboards = () => {
+  const gameboards = document.querySelectorAll(".gameboard");
+  gameboards.forEach(board => createBoardCells(board));
+}
 
 export const displayShips = (gameboard) => {
   for (const occupiedCells of gameboard.occupiedCells) {
@@ -23,6 +29,17 @@ export const displayShips = (gameboard) => {
       });
   }
 };
+
+export const addEventListeners = () => {
+  const computerGameboard = document.querySelector(".computer-board");
+computerGameboard.addEventListener("click", (e) => {
+    if (e.target.className === "cell") {
+        const x = +e.target.dataset.coordX;
+        const y = +e.target.dataset.coordY;
+        game.playRound([x,y]);
+    }
+})
+}
 
 export const updateBoards = (player) => {
   for (const missedCell of player.gameboard.missedCells) {
