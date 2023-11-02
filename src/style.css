@@ -22,6 +22,7 @@
 :root {
     --red: #E74460;
     --grey: #7BA0B0;
+    --seafoam: #27C7AB;
 }
 
 * {
@@ -59,6 +60,25 @@ main {
     justify-content: space-evenly;
     max-width: 1200px;
     padding: 30px;
+}
+
+.board-label {
+    border: 2px solid #000;
+    border-radius: 15px;
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+    font-family: 'Inter Semibold';
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    text-align: center;
+    width: 160px;
+}
+
+.board-label.player {
+    background-color: var(--seafoam);
+}
+
+.board-label.computer {
+    background-color: var(--red);
 }
 
 .gameboard {
