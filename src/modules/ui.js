@@ -1,6 +1,7 @@
 import { game } from "./game";
 
 const createBoardCells = (gameboard) => {
+  gameboard.innerHTML = "";
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
       const cell = document.createElement("div");
@@ -72,8 +73,10 @@ export const displayMessages = (message, player) => {
 
 export const openWinnerModal = (winner) => {
   const modalContent = document.querySelector(".winner-modal-content");
-  const winnerText = document.querySelector("winner-text");
+  const winnerText = document.querySelector(".winner-text");
   const winnerModal = document.querySelector(".winner-modal");
+  const newGameButton = document.querySelector(".new-game-button");
+
   winnerModal.classList.add("visible");
 
   if (winner === game.player) {
@@ -83,9 +86,12 @@ export const openWinnerModal = (winner) => {
     modalContent.style.background = "url('images/loser-bg.jpeg') no-repeat center";
     winnerText.innerText = "You lose!";
   }
+
+  newGameButton.addEventListener("click", () => {
+    winnerModal.classList.remove("visible");
+    game.resetGame();
+    game.init();
+  })
 }
 
-export const closeWinnerModal = () => {
-  const winnerModal = document.querySelector(".winner-modal");
-  winnerModal.classList.remove("visible");
-}
+

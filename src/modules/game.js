@@ -6,7 +6,6 @@ import {
   updateBoards,
   displayMessages,
   openWinnerModal,
-  closeWinnerModal
 } from "./ui";
 
 export const game = {
@@ -62,4 +61,11 @@ export const game = {
       openWinnerModal(winner);
     }
   },
+
+  resetGame() {
+    this.player = new Player("player"),
+    this.computer = new Computer("computer"),
+    this.isGameOn = true;
+    this.playerTurn = true;
+  }
 };
