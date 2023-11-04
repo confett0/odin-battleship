@@ -4,6 +4,7 @@ import { displayGameboards, displayShips, addEventListeners, updateBoards, displ
 export const game = {
   player: new Player("player"),
   computer: new Computer("computer"),
+  playerTurn: true,
 
   init() {
     displayGameboards();
@@ -13,27 +14,39 @@ export const game = {
     addEventListeners();
   },
 
-  playRound(coord) {
-    const playerMove = this.computer.gameboard.receiveAttack(coord);
+  playerMove(coord) {
+    const playerChoice = this.computer.gameboard.receiveAttack(coord);
     updateBoards(this.computer);
-    displayMessages(playerMove, "player");
-    const computerChoice = this.computer.attack();
-    setTimeout(() => {
-      const computerMove = game.player.gameboard.receiveAttack(computerChoice);
-      updateBoards(game.player);
-      displayMessages(computerMove, "computer");
-    }, 1500);
+    displayMessages(playerChoice, "player");
+    this.playerTurn = false;
     const winner = this.checkWinner();
     if (winner) {
-      console.log(winner);
+      console.log(winner.name);
     }
   },
 
-  checkWinner() {
-        if (this.computer.gameboard.allSunk()) {
-          return this.player;
-        } else if (this.player.gameboard.allSunk()) {
-            return this.computer;
-        }
+  computerMove() {
+    const computerChoice = game.computer.attack();
+    const computerMove = game.player.gameboard.receiveAttack(computerChoice);
+    updateBoards(game.player);
+    displayMessages(computerMove, "computer");
+    game.playerTurn = true;
+    const winner = game.checkWinner();
+    if (winner) {
+      console.log(winner.name);
     }
+  },
+
+  playRound(coord) {
+    this.playerMove(coord);
+    setTimeout(game.computerMove, 1500);
+  },
+
+  checkWinner() {
+    if (this.computer.gameboard.allSunk()) {
+      return this.player;
+    } else if (this.player.gameboard.allSunk()) {
+      return this.computer;
+    }
+  }
 };
