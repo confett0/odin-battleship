@@ -123,3 +123,35 @@ main {
 .hit {
     background: url("images/hit.png") var(--grey) no-repeat center;
 }
+
+.winner-modal {
+    background: url("images/winner-bg.jpeg") no-repeat center;
+    border-radius: 5%;
+    box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.1);
+    display: none;
+    color: var(--red);
+    height: 450px;
+    letter-spacing: 2px;
+    padding: 80px 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 400px;
+}
+
+button {
+    background-color: var(--red);
+    border: 2px solid #000;
+    border-radius: 15px;
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+    cursor: pointer;
+    font-family: 'Inter Semibold';
+    font-size: 16px;
+    margin-top: 260px;
+    padding: 12px 15px;
+    text-align: center;
+    width: 160px;
+}
+
+.visible {
+    display: block;
+}
