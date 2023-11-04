@@ -139,6 +139,7 @@ main {
 
 .winner-modal-content {
     background: url("images/winner-bg.jpeg") no-repeat center;
+    border: 2px solid #000;
     border-radius: 5%;
     box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.1);
     color: var(--red);
@@ -162,7 +163,12 @@ button {
     margin-top: 260px;
     padding: 12px 15px;
     text-align: center;
+    transition: ease-in-out 300ms;
     width: 160px;
+}
+
+button:hover {
+    background-color: var(--seafoam);
 }
 
 .visible {
