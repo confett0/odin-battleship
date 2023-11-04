@@ -38,12 +38,10 @@ export const game = {
 
   playRound(coord) {
     this.playerMove(coord);
+    this.endGame();
     if (this.isGameOn) {
-    setTimeout(game.computerMove, 1300);
-  }
-    const winner = game.checkWinner();
-    if (winner) {
-      this.endGame(winner);
+      setTimeout(game.computerMove, 1300);
+      this.endGame();
     }
   },
 
@@ -55,8 +53,11 @@ export const game = {
     }
   },
 
-  endGame(winner) {
-    this.isGameOn = false;
-    return winner === this.player ? "You win!" : "You lose!";
+  endGame() {
+    const winner = this.checkWinner();
+    if (winner) {
+      this.isGameOn = false;
+      return winner === this.player ? "You win!" : "You lose!";
+    }
   },
 };
