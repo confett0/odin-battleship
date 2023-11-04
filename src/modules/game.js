@@ -5,6 +5,8 @@ import {
   addEventListeners,
   updateBoards,
   displayMessages,
+  openWinnerModal,
+  closeWinnerModal
 } from "./ui";
 
 export const game = {
@@ -57,7 +59,7 @@ export const game = {
     const winner = this.checkWinner();
     if (winner) {
       this.isGameOn = false;
-      return winner === this.player ? "You win!" : "You lose!";
+      openWinnerModal(winner);
     }
   },
 };

@@ -69,3 +69,23 @@ export const displayMessages = (message, player) => {
     messageBoard.innerText = `The enemy fires into your waters... ${message}`;
   }
 };
+
+export const openWinnerModal = (winner) => {
+  const modalContent = document.querySelector(".winner-modal-content");
+  const winnerText = document.querySelector("winner-text");
+  const winnerModal = document.querySelector(".winner-modal");
+  winnerModal.classList.add("visible");
+
+  if (winner === game.player) {
+    winnerText.innerText = "You win!";
+  }
+  if (winner === game.computer) {
+    modalContent.style.background = "url('images/loser-bg.jpeg') no-repeat center";
+    winnerText.innerText = "You lose!";
+  }
+}
+
+export const closeWinnerModal = () => {
+  const winnerModal = document.querySelector(".winner-modal");
+  winnerModal.classList.remove("visible");
+}
