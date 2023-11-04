@@ -1,4 +1,3 @@
-// import { Gameboard } from "./gameboard";
 import { game } from "./game";
 
 const createBoardCells = (gameboard) => {
@@ -32,20 +31,14 @@ export const displayShips = (gameboard) => {
 
 export const addEventListeners = () => {
   const computerGameboard = document.querySelector(".computer-board");
-
-    computerGameboard.addEventListener("click", (e) => {
-      if (e.target.className === "cell" && game.playerTurn) {
-        const x = +e.target.dataset.coordX;
-        const y = +e.target.dataset.coordY;
-        game.playRound([x, y]);
-      }
-    });
+  computerGameboard.addEventListener("click", (e) => {
+    if (e.target.className === "cell" && game.playerTurn) {
+      const x = +e.target.dataset.coordX;
+      const y = +e.target.dataset.coordY;
+      game.playRound([x, y]);
+    }
+  });
 };
-
-export const removeEventListeners = () => {
-  const computerGameboard = document.querySelector(".computer-board");
-  computerGameboard.removeEventListener("click", game.playRound([x, y]));
-}
 
 export const updateBoards = (player) => {
   for (const missedCell of player.gameboard.missedCells) {
@@ -75,4 +68,4 @@ export const displayMessages = (message, player) => {
   } else if (player === "computer") {
     messageBoard.innerText = `The enemy fires into your waters... ${message}`;
   }
-}
+};

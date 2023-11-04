@@ -1,5 +1,11 @@
 import { Player, Computer } from "./player";
-import { displayGameboards, displayShips, addEventListeners, updateBoards, displayMessages } from "./ui";
+import {
+  displayGameboards,
+  displayShips,
+  addEventListeners,
+  updateBoards,
+  displayMessages,
+} from "./ui";
 
 export const game = {
   player: new Player("player"),
@@ -19,10 +25,6 @@ export const game = {
     updateBoards(this.computer);
     displayMessages(playerChoice, "player");
     this.playerTurn = false;
-    const winner = this.checkWinner();
-    if (winner) {
-      console.log(winner.name);
-    }
   },
 
   computerMove() {
@@ -31,15 +33,15 @@ export const game = {
     updateBoards(game.player);
     displayMessages(computerMove, "computer");
     game.playerTurn = true;
-    const winner = game.checkWinner();
-    if (winner) {
-      console.log(winner.name);
-    }
   },
 
   playRound(coord) {
     this.playerMove(coord);
     setTimeout(game.computerMove, 1500);
+    const winner = game.checkWinner();
+    if (winner) {
+      this.endGame(winner);
+    }
   },
 
   checkWinner() {
@@ -48,5 +50,9 @@ export const game = {
     } else if (this.player.gameboard.allSunk()) {
       return this.computer;
     }
-  }
+  },
+
+  endGame(winner) {
+    return winner === this.player ? "You win!" : "You lose!";
+  },
 };
