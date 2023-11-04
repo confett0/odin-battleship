@@ -11,6 +11,7 @@ export const game = {
   player: new Player("player"),
   computer: new Computer("computer"),
   playerTurn: true,
+  isGameOn: true,
 
   init() {
     displayGameboards();
@@ -37,7 +38,9 @@ export const game = {
 
   playRound(coord) {
     this.playerMove(coord);
-    setTimeout(game.computerMove, 1500);
+    if (this.isGameOn) {
+    setTimeout(game.computerMove, 1300);
+  }
     const winner = game.checkWinner();
     if (winner) {
       this.endGame(winner);
@@ -53,6 +56,7 @@ export const game = {
   },
 
   endGame(winner) {
+    this.isGameOn = false;
     return winner === this.player ? "You win!" : "You lose!";
   },
 };

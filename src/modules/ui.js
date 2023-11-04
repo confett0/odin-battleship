@@ -32,7 +32,7 @@ export const displayShips = (gameboard) => {
 export const addEventListeners = () => {
   const computerGameboard = document.querySelector(".computer-board");
   computerGameboard.addEventListener("click", (e) => {
-    if (e.target.className === "cell" && game.playerTurn) {
+    if (e.target.className === "cell" && game.playerTurn && game.isGameOn) {
       const x = +e.target.dataset.coordX;
       const y = +e.target.dataset.coordY;
       game.playRound([x, y]);
