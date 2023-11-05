@@ -67,5 +67,6 @@ export const game = {
     this.computer = new Computer("computer"),
     this.isGameOn = true;
     this.playerTurn = true;
+    displayMessages("Awaiting orders, admiral!");
   }
 };
