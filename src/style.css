@@ -191,3 +191,7 @@ button:hover {
 .drag-ship-cell {
     background-color: var(--grey);
 }
+
+.drag-over {
+    background-color: var(--seafoam);
+}
