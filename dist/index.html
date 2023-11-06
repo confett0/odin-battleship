@@ -15,12 +15,21 @@
             <div class="board-label player">Friendly Waters</div>
             <div class="gameboard player-board"></div>
         </div>
-        <div class="gameboard-wrap">
+        <div class="gameboard-wrap hidden">
             <div class="board-label computer">Enemy Waters</div>
             <div class="gameboard computer-board"></div>
         </div>
+        <div class="drag-and-drop-wrap">
+            <div class="drag-ship" draggable="true">
+                <div class="drag-ship-cell cell"></div>
+                <div class="drag-ship-cell cell"></div>
+                <div class="drag-ship-cell cell"></div>
+                <div class="drag-ship-cell cell"></div>
+                <div class="drag-ship-cell cell"></div>
+            </div>
+        </div>
     </main>
-    <div class="message-board">Awaiting orders, admiral!</div>
+    <div class="message-board hidden">Awaiting orders, admiral!</div>
     <div class="winner-modal">
         <div class="winner-modal-content">
             <h2 class="winner-text">You win</h2>
