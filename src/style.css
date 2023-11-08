@@ -106,6 +106,7 @@ main {
     border-radius: 20%;
     box-shadow: 1px 0px 0px rgba(0, 0, 0, 1);
     height: 42px;
+    position: relative;
     width: 42px;
 }
 
@@ -186,6 +187,8 @@ button:hover {
 .drag-ship {
     display: flex;
     gap: 4px;
+    position: absolute;
+    z-index: 2;
 }
 
 .drag-ship-cell {
