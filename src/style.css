@@ -163,7 +163,6 @@ button {
     cursor: pointer;
     font-family: 'Inter Semibold';
     font-size: 16px;
-    margin-top: 260px;
     padding: 12px 15px;
     text-align: center;
     transition: ease-in-out 300ms;
@@ -184,9 +183,14 @@ button:hover {
 
 /* Drag and drop */
 
+.drag-and-drop-wrap {
+    width: 450px;
+}
+
 .drag-ship {
     display: flex;
     gap: 4px;
+    margin-bottom: 20px;
 }
 
 .drag-ship-cell {
@@ -201,4 +205,8 @@ button:hover {
     margin: -2px 0 0 -2px;
     position: absolute;
     z-index: 2;
+}
+
+.vertical {
+    flex-direction: column;
 }
