@@ -1,8 +1,8 @@
 export const dragAndDrop = () => {
     // Draggable container for the ship
-    const shipContainer = document.querySelector('.drag-ship');
+    const ships = document.querySelectorAll('.drag-ship');
 
-    shipContainer.addEventListener('dragstart', dragStart);
+    ships.forEach(ship => ship.addEventListener('dragstart', dragStart));
 
     function dragStart(e) {
         e.dataTransfer.setData('text/plain', e.target.id);
@@ -37,13 +37,17 @@ export const dragAndDrop = () => {
 
     function drop(e) {
         e.preventDefault();
-        console.log(e.target);
         e.target.classList.remove('drag-over');
 
         const id = e.dataTransfer.getData('text/plain');
-        const draggable = document.getElementById(id);
+        const draggableShip = document.getElementById(id);
+        const shipLength = draggableShip.getAttribute('data-length');
+        const gridLength = 10;
 
-        e.target.appendChild(draggable);
+        if (e.target.dataset.coordX <= gridLength - shipLength) {
+        e.target.appendChild(draggableShip);
+        draggableShip.classList.add("positioned-ship");
+        }
 
         /* if (draggable.classList.contains('drag-ship')) {
             // Check if the target cell and the 4 following cells are empty

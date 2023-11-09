@@ -187,8 +187,6 @@ button:hover {
 .drag-ship {
     display: flex;
     gap: 4px;
-    position: absolute;
-    z-index: 2;
 }
 
 .drag-ship-cell {
@@ -197,4 +195,10 @@ button:hover {
 
 .drag-over {
     background-color: var(--seafoam);
+}
+
+.positioned-ship {
+    margin: -2px 0 0 -2px;
+    position: absolute;
+    z-index: 2;
 }
