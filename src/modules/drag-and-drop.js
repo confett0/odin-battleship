@@ -11,6 +11,8 @@ export const dragAndDrop = () => {
     e.dataTransfer.setData("text/plain", e.target.id);
     if (changeAxisButton.innerText === "Axis: vertical") {
     e.target.classList.add("vertical");
+} else {
+  e.target.classList.remove("vertical");
 }
     setTimeout(() => {
       e.target.classList.add("hidden");
