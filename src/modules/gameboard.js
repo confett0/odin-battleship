@@ -32,39 +32,44 @@ export class Gameboard {
   }
 
   placeShip(ship, startCoords, orientation) {
-    const isOccupied = (x, y) => {
-      if (x < 0 || x >= 10 || y < 0 || y >= 10) {
-        return true; // Out of bounds is considered occupied
-      }
-      return this.board[x][y].ship !== null;
-    };
-
     const [x, y] = startCoords;
-
+  
     if (orientation === "horizontal") {
-      for (let i = x; i < x + ship.length; i++) {
-        if (isOccupied(i, y)) {
-          return;
+      console.log(x,y, ship.length);
+      for (let i = x; i < x + +ship.length; i++) {
+        try {
+          if (!this.board[i][y].ship) {
+            this.board[i][y].ship = ship.name;
+            this.occupiedCells.push([i, y]);
+          } else {
+            console.error(`Cell at [${i}, ${y}] is already occupied.`);
+            return; // Ship placement failed
+          }
+        } catch (error) {
+          console.error(`Error placing ship at [${i}, ${y}].`, error);
+          return; // Ship placement failed
         }
       }
-      for (let i = x; i < x + ship.length; i++) {
-        this.board[i][y].ship = ship.name;
-        this.occupiedCells.push([i, y]);
-      }
     }
-
+  
     if (orientation === "vertical") {
       for (let i = y; i < y + ship.length; i++) {
-        if (isOccupied(x, i)) {
-          return;
+        try {
+          if (!this.board[x][i].ship) {
+            this.board[x][i].ship = ship.name;
+            this.occupiedCells.push([x, i]);
+          } else {
+            console.error(`Cell at [${x}, ${i}] is already occupied.`);
+            return; // Ship placement failed
+          }
+        } catch (error) {
+          console.error(`Error placing ship at [${x}, ${i}].`, error);
+          return; // Ship placement failed
         }
       }
-      for (let i = y; i < y + ship.length; i++) {
-        this.board[x][i].ship = ship.name;
-        this.occupiedCells.push([x, i]);
-      }
     }
-
+  
+    console.log(`Ship ${ship.name} placed successfully.`);
     return ship;
   }
 

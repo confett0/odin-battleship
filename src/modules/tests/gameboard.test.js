@@ -19,8 +19,8 @@ describe('Gameboard', () => {
     it('should place ship in the given coordinates vertically', () => {
         const gameboard = new Gameboard();
         const destroyer = gameboard.createShip("Destroyer", 3);
-        gameboard.placeShip(destroyer, [2,2], "vertical");
-        expect(gameboard.board[2][3].ship).toBe("Destroyer");
+        gameboard.placeShip(destroyer, [9,2], "vertical");
+        expect(gameboard.board[9][3].ship).toBe("Destroyer");
       });
     
       it('should record the coordinates of a missed shot', () => {

@@ -1,4 +1,5 @@
 import { Player, Computer } from "./player";
+import { dragAndDrop } from "./drag-and-drop";
 import {
   displayGameboards,
   displayShips,
@@ -14,11 +15,14 @@ export const game = {
   playerTurn: true,
   isGameOn: true,
 
-  init() {
+  setUp() {
     displayGameboards();
-    this.player.gameboard.autoPopulateBoard();
+    dragAndDrop();
+  },
+
+  start() {
     this.computer.gameboard.autoPopulateBoard();
-    displayShips(this.player.gameboard);
+   // displayShips(this.player.gameboard);
     addEventListeners();
   },
 

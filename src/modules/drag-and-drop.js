@@ -1,19 +1,22 @@
+import { game } from "./game";
+
 export const dragAndDrop = () => {
-  
-    const changeAxisButton = document.querySelector(".set-axis");
-    changeAxisButton.addEventListener("click", () => {
-        changeAxisButton.innerText === "Axis: horizontal" ? changeAxisButton.innerText = "Axis: vertical" : changeAxisButton.innerText = "Axis: horizontal";
-    })
+  const changeAxisButton = document.querySelector(".set-axis");
+  changeAxisButton.addEventListener("click", () => {
+    changeAxisButton.innerText === "Axis: horizontal"
+      ? (changeAxisButton.innerText = "Axis: vertical")
+      : (changeAxisButton.innerText = "Axis: horizontal");
+  });
   const ships = document.querySelectorAll(".drag-ship");
   ships.forEach((ship) => ship.addEventListener("dragstart", dragStart));
 
   function dragStart(e) {
     e.dataTransfer.setData("text/plain", e.target.id);
     if (changeAxisButton.innerText === "Axis: vertical") {
-    e.target.classList.add("vertical");
-} else {
-  e.target.classList.remove("vertical");
-}
+      e.target.classList.add("vertical");
+    } else {
+      e.target.classList.remove("vertical");
+    }
     setTimeout(() => {
       e.target.classList.add("hidden");
     }, 0);
@@ -53,33 +56,23 @@ export const dragAndDrop = () => {
     const gridLength = 10;
 
     if (draggableShip.classList.contains("vertical")) {
-        if (e.target.dataset.coordY <= gridLength - shipLength) {
-            e.target.appendChild(draggableShip);
-            draggableShip.classList.add("positioned-ship");
-          }
+      if (e.target.dataset.coordY <= gridLength - shipLength) {
+        e.target.appendChild(draggableShip);
+        draggableShip.classList.add("positioned-ship");
+      }
     } else {
-        if (e.target.dataset.coordX <= gridLength - shipLength) {
-            e.target.appendChild(draggableShip);
-            draggableShip.classList.add("positioned-ship");
-          }
+      if (e.target.dataset.coordX <= gridLength - shipLength) {
+        e.target.appendChild(draggableShip);
+        draggableShip.classList.add("positioned-ship");
+      }
     }
+    const ship = game.player.gameboard.createShip(id, +shipLength);
 
-
-    /* if (draggable.classList.contains('drag-ship')) {
-            // Check if the target cell and the 4 following cells are empty
-            const targetCellIndex = Array.from(cells).indexOf(e.target);
-            const cellsToFill = Array.from(cells).slice(targetCellIndex, targetCellIndex + 5);
-
-            if (cellsToFill.every(cell => !cell.classList.contains('has-ship'))) {
-                // Add the entire ship to the 5 consecutive cells
-                cellsToFill.forEach(cell => {
-                    // cell.classList.add("has-ship");
-                    cell.appendChild(draggable.cloneNode(true));
-                });
-
-                // Display the draggable element
-                draggable.classList.remove('hidden');
-            }
-        }*/
+    game.player.gameboard.placeShip(
+      ship,
+      [+e.target.dataset.coordX, +e.target.dataset.coordY],
+      "horizontal"
+    );
+    console.log(game.player.gameboard.board);
   }
 };
