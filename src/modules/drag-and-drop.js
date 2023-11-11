@@ -61,6 +61,7 @@ export const dragAndDrop = () => {
       if (e.target.dataset.coordY <= gridLength - shipLength) {
         e.target.appendChild(draggableShip);
         draggableShip.classList.add("positioned-ship");
+        game.player.gameboard.removeShip(ship);
         game.player.gameboard.placeShip(
           ship,
           [+e.target.dataset.coordX, +e.target.dataset.coordY],
@@ -71,6 +72,7 @@ export const dragAndDrop = () => {
       if (e.target.dataset.coordX <= gridLength - shipLength) {
         e.target.appendChild(draggableShip);
         draggableShip.classList.add("positioned-ship");
+        game.player.gameboard.removeShip(ship);
         game.player.gameboard.placeShip(
           ship,
           [+e.target.dataset.coordX, +e.target.dataset.coordY],
