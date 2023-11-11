@@ -73,6 +73,18 @@ export class Gameboard {
     return ship;
   }
 
+  removeShip(ship) {
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        
+        if (this.board[i][j].ship === ship.name) {
+          this.board[i][j].ship = null;
+        }
+      }
+    }
+
+  }
+
   receiveAttack([x, y]) {
     if (this.missedCells.includes([x, y]) || this.hitCells.includes([x, y])) {
       return;
