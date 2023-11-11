@@ -55,24 +55,30 @@ export const dragAndDrop = () => {
     const shipLength = draggableShip.getAttribute("data-length");
     const gridLength = 10;
 
+    const ship = game.player.gameboard.createShip(id, +shipLength);
+
     if (draggableShip.classList.contains("vertical")) {
       if (e.target.dataset.coordY <= gridLength - shipLength) {
         e.target.appendChild(draggableShip);
         draggableShip.classList.add("positioned-ship");
+        game.player.gameboard.placeShip(
+          ship,
+          [+e.target.dataset.coordX, +e.target.dataset.coordY],
+          "vertical"
+        );
       }
     } else {
       if (e.target.dataset.coordX <= gridLength - shipLength) {
         e.target.appendChild(draggableShip);
         draggableShip.classList.add("positioned-ship");
+        game.player.gameboard.placeShip(
+          ship,
+          [+e.target.dataset.coordX, +e.target.dataset.coordY],
+          "horizontal"
+        );
       }
     }
-    const ship = game.player.gameboard.createShip(id, +shipLength);
 
-    game.player.gameboard.placeShip(
-      ship,
-      [+e.target.dataset.coordX, +e.target.dataset.coordY],
-      "horizontal"
-    );
     console.log(game.player.gameboard.board);
   }
 };
