@@ -62,6 +62,8 @@ export const dragAndDrop = () => {
       const result = game.player.gameboard.placeShip(ship, [coordX, coordY], shipOrientation);
       if (result) {
         draggableShip.classList.toggle("vertical");
+      } else {
+        shipOrientation === "horizontal" ? shipOrientation = "vertical" : shipOrientation = "horizontal";
       }
 
       console.log(game.player.gameboard.board);
