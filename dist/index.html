@@ -22,9 +22,9 @@
             <div class="gameboard computer-board"></div>
         </div>
         <div class="drag-and-drop-wrap">
-            <div class="board-label drag-and-drop-label">Place your ships!</div>
             <div class="draggable-ship-container">
                 <div class="ship-wrap">
+                    <h3>Carrier</h3>
                     <div class="drag-ship" id="Carrier" data-length="5" draggable="true">
                         <div class="drag-ship-cell cell"></div>
                         <div class="drag-ship-cell cell"></div>
@@ -32,30 +32,43 @@
                         <div class="drag-ship-cell cell"></div>
                         <div class="drag-ship-cell cell"></div>
                     </div>
-                    <h3>Carrier</h3>
                 </div>
                 <div class="ship-wrap">
-                <div class="drag-ship" id="Battleship" data-length="4" draggable="true">
-                    <div class="drag-ship-cell cell"></div>
-                    <div class="drag-ship-cell cell"></div>
-                    <div class="drag-ship-cell cell"></div>
-                    <div class="drag-ship-cell cell"></div>
+                    <h3>Battleship</h3>
+                    <div class="drag-ship" id="Battleship" data-length="4" draggable="true">
+                        <div class="drag-ship-cell cell"></div>
+                        <div class="drag-ship-cell cell"></div>
+                        <div class="drag-ship-cell cell"></div>
+                        <div class="drag-ship-cell cell"></div>
+                    </div>
                 </div>
-                <h3>Battleship</h3>
-            </div>
-                <div class="drag-ship" id="Cruiser" data-length="3" draggable="true">
-                    <div class="drag-ship-cell cell"></div>
-                    <div class="drag-ship-cell cell"></div>
-                    <div class="drag-ship-cell cell"></div>
+                <div class="ship-wrap">
+                    <h3>Submarine</h3>
+                    <div class="drag-ship" id="Cruiser" data-length="3" draggable="true">
+                        <div class="drag-ship-cell cell"></div>
+                        <div class="drag-ship-cell cell"></div>
+                        <div class="drag-ship-cell cell"></div>
+                    </div>
                 </div>
-                <div class="drag-ship" id="Submarine" data-length="3" draggable="true">
-                    <div class="drag-ship-cell cell"></div>
-                    <div class="drag-ship-cell cell"></div>
-                    <div class="drag-ship-cell cell"></div>
+                <div class="ship-wrap">
+                    <h3>Cruiser</h3>
+                    <div class="drag-ship" id="Submarine" data-length="3" draggable="true">
+                        <div class="drag-ship-cell cell"></div>
+                        <div class="drag-ship-cell cell"></div>
+                        <div class="drag-ship-cell cell"></div>
+                    </div>
                 </div>
-                <div class="drag-ship" id="Destroyer" data-length="2" draggable="true">
-                    <div class="drag-ship-cell cell"></div>
-                    <div class="drag-ship-cell cell"></div>
+                <div class="ship-wrap">
+                    <h3>Destroyer</h3>
+                    <div class="drag-ship" id="Destroyer" data-length="2" draggable="true">
+                        <div class="drag-ship-cell cell"></div>
+                        <div class="drag-ship-cell cell"></div>
+                    </div>
+                </div>
+                <div class="instructions">
+                    <p>Drag and drop your ship on the gameboard or...</p>
+                    <button type="button" class="autoplace-button">Autoplace</button>
+                    <p>Click on the positioned ship to rotate it.</p>
                 </div>
             </div>
         </div>

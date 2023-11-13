@@ -188,23 +188,23 @@ button:hover {
 
 /* Drag and drop */
 
-.drag-and-drop-wrap {
-    width: 350px;
-}
-
-.drag-and-drop-label {
-    background-color: var(--yellow);
-    margin: auto;
-    width: 180px;
+.draggable-ship-container {
+    border: 2px solid #000;
+    border-radius: 5%;
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+    padding: 20px 15px 30px 15px;
+    text-align: center;
 }
 
 .ship-wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    display: grid;
+    grid-template-columns: 150px 250px;
+    align-items: end;
+    height: 62px;
 }
 
 .drag-ship {
+    cursor: grab;
     display: flex;
     gap: 4px;
     margin-top: 20px;
@@ -212,6 +212,15 @@ button:hover {
 
 .drag-ship-cell {
     background-color: var(--grey);
+}
+
+.instructions {
+    margin-top: 30px;
+}
+
+.autoplace-button {
+    background-color: var(--yellow);
+    margin: 15px 0 15px;
 }
 
 .drag-over {
