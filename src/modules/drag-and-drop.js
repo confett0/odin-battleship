@@ -1,22 +1,12 @@
 import { game } from "./game";
 
 export const dragAndDrop = () => {
-  const changeAxisButton = document.querySelector(".set-axis");
-  changeAxisButton.addEventListener("click", () => {
-    changeAxisButton.innerText === "Axis: horizontal"
-      ? (changeAxisButton.innerText = "Axis: vertical")
-      : (changeAxisButton.innerText = "Axis: horizontal");
-  });
+  
   const ships = document.querySelectorAll(".drag-ship");
   ships.forEach((ship) => ship.addEventListener("dragstart", dragStart));
 
   function dragStart(e) {
     e.dataTransfer.setData("text/plain", e.target.id);
-    if (changeAxisButton.innerText === "Axis: vertical") {
-      e.target.classList.add("vertical");
-    } else {
-      e.target.classList.remove("vertical");
-    }
     setTimeout(() => {
       e.target.classList.add("hidden");
     }, 0);
@@ -52,34 +42,30 @@ export const dragAndDrop = () => {
 
     const id = e.dataTransfer.getData("text/plain");
     const draggableShip = document.getElementById(id);
-    const shipLength = draggableShip.getAttribute("data-length");
-    const gridLength = 10;
+    const shipLength = +(draggableShip.getAttribute("data-length"));
+    const coordX = +e.target.dataset.coordX;
+    const coordY = +e.target.dataset.coordY;
+    const ship = game.player.gameboard.createShip(id, shipLength);
+    let shipOrientation = "horizontal";
 
-    const ship = game.player.gameboard.createShip(id, +shipLength);
 
-    if (draggableShip.classList.contains("vertical")) {
-      if (e.target.dataset.coordY <= gridLength - shipLength) {
-        e.target.appendChild(draggableShip);
-        draggableShip.classList.add("positioned-ship");
-        game.player.gameboard.removeShip(ship);
-        game.player.gameboard.placeShip(
-          ship,
-          [+e.target.dataset.coordX, +e.target.dataset.coordY],
-          "vertical"
-        );
-      }
-    } else {
-      if (e.target.dataset.coordX <= gridLength - shipLength) {
-        e.target.appendChild(draggableShip);
-        draggableShip.classList.add("positioned-ship");
-        game.player.gameboard.removeShip(ship);
-        game.player.gameboard.placeShip(
-          ship,
-          [+e.target.dataset.coordX, +e.target.dataset.coordY],
-          "horizontal"
-        );
-      }
+    game.player.gameboard.removeShip(ship);
+    const result = game.player.gameboard.placeShip(ship, [coordX, coordY], shipOrientation);
+    if (result) {
+      e.target.appendChild(draggableShip);
+      draggableShip.classList.add("positioned-ship");
     }
+
+    draggableShip.addEventListener("click", () => {
+      shipOrientation === "horizontal" ? shipOrientation = "vertical" : shipOrientation = "horizontal";
+      game.player.gameboard.removeShip(ship);
+      const result = game.player.gameboard.placeShip(ship, [coordX, coordY], shipOrientation);
+      if (result) {
+        draggableShip.classList.toggle("vertical");
+      }
+
+      console.log(game.player.gameboard.board);
+    });
 
     console.log(game.player.gameboard.board);
   }
