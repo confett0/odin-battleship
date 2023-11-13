@@ -23,6 +23,7 @@
     --red: #E74460;
     --grey: #7BA0B0;
     --seafoam: #27C7AB;
+    --yellow: #DAE744;
 }
 
 * {
@@ -38,6 +39,10 @@ body {
     font-family: "Inter Regular";
     flex-direction: column;
     min-height: 100vh;
+}
+
+h2, h3 {
+    font-family: 'Inter Semibold';
 }
 
 header {
@@ -184,13 +189,25 @@ button:hover {
 /* Drag and drop */
 
 .drag-and-drop-wrap {
-    width: 450px;
+    width: 350px;
+}
+
+.drag-and-drop-label {
+    background-color: var(--yellow);
+    margin: auto;
+    width: 180px;
+}
+
+.ship-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .drag-ship {
     display: flex;
     gap: 4px;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .drag-ship-cell {

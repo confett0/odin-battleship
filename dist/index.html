@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battleship</title>
     <script src="main.js" defer></script>
 </head>
+
 <body>
     <header>
         <h1 class="logo">Battleship</h1>
@@ -20,21 +22,27 @@
             <div class="gameboard computer-board"></div>
         </div>
         <div class="drag-and-drop-wrap">
-            <!--<button class="set-axis">Axis: horizontal</button>-->
-            <div class="ship-wrap">
-                <div class="drag-ship" id="Carrier" data-length="5" draggable="true">
-                    <div class="drag-ship-cell cell"></div>
-                    <div class="drag-ship-cell cell"></div>
-                    <div class="drag-ship-cell cell"></div>
-                    <div class="drag-ship-cell cell"></div>
-                    <div class="drag-ship-cell cell"></div>
+            <div class="board-label drag-and-drop-label">Place your ships!</div>
+            <div class="draggable-ship-container">
+                <div class="ship-wrap">
+                    <div class="drag-ship" id="Carrier" data-length="5" draggable="true">
+                        <div class="drag-ship-cell cell"></div>
+                        <div class="drag-ship-cell cell"></div>
+                        <div class="drag-ship-cell cell"></div>
+                        <div class="drag-ship-cell cell"></div>
+                        <div class="drag-ship-cell cell"></div>
+                    </div>
+                    <h3>Carrier</h3>
                 </div>
+                <div class="ship-wrap">
                 <div class="drag-ship" id="Battleship" data-length="4" draggable="true">
                     <div class="drag-ship-cell cell"></div>
                     <div class="drag-ship-cell cell"></div>
                     <div class="drag-ship-cell cell"></div>
                     <div class="drag-ship-cell cell"></div>
                 </div>
+                <h3>Battleship</h3>
+            </div>
                 <div class="drag-ship" id="Cruiser" data-length="3" draggable="true">
                     <div class="drag-ship-cell cell"></div>
                     <div class="drag-ship-cell cell"></div>
@@ -60,4 +68,5 @@
         </div>
     </div>
 </body>
+
 </html>
