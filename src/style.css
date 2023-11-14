@@ -166,6 +166,7 @@ button {
     border-radius: 15px;
     box-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
     cursor: pointer;
+    display: block;
     font-family: 'Inter Semibold';
     font-size: 16px;
     padding: 12px 15px;
@@ -192,8 +193,7 @@ button:hover {
     border: 2px solid #000;
     border-radius: 5%;
     box-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
-    padding: 20px 15px 30px 15px;
-    text-align: center;
+    padding: 20px 15px 30px 22px;
 }
 
 .ship-wrap {
@@ -220,7 +220,7 @@ button:hover {
 
 .autoplace-button {
     background-color: var(--yellow);
-    margin: 15px 0 15px;
+    margin: 15px auto 0;
 }
 
 .drag-over {
@@ -235,4 +235,19 @@ button:hover {
 
 .vertical {
     flex-direction: column;
+}
+
+.start-game-button {
+    margin: 20px auto;
+}
+
+.disabled-button {
+    background-color: var(--grey);
+    border: 2px solid #57737f;
+    color: #57737f;
+    cursor: default;
+}
+
+.disabled-button:hover {
+    background-color: var(--grey);
 }
