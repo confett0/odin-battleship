@@ -22,7 +22,6 @@ export const game = {
 
   start() {
     this.computer.gameboard.autoPopulateBoard();
-   // displayShips(this.player.gameboard);
     addEventListeners();
   },
 

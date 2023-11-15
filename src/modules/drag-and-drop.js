@@ -1,8 +1,12 @@
 import { game } from "./game";
+import { displayShips } from "./ui";
 
 export const dragAndDrop = () => {
   
   const ships = document.querySelectorAll(".drag-ship");
+  const cells = document.querySelectorAll(".cell");
+  const autoPlaceButton = document.querySelector(".autoplace-button");
+  
   ships.forEach((ship) => ship.addEventListener("dragstart", dragStart));
 
   function dragStart(e) {
@@ -11,16 +15,6 @@ export const dragAndDrop = () => {
       e.target.classList.add("hidden");
     }, 0);
   }
-
-  // Drop targets
-  const cells = document.querySelectorAll(".cell");
-
-  cells.forEach((cell) => {
-    cell.addEventListener("dragenter", dragEnter);
-    cell.addEventListener("dragover", dragOver);
-    cell.addEventListener("dragleave", dragLeave);
-    cell.addEventListener("drop", drop);
-  });
 
   function dragEnter(e) {
     e.preventDefault();
@@ -66,10 +60,20 @@ export const dragAndDrop = () => {
       } else {
         changeOrientation();
       }
-
-      console.log(game.player.gameboard.board);
     });
-
-    console.log(game.player.gameboard.board);
   }
+
+  cells.forEach((cell) => {
+    cell.addEventListener("dragenter", dragEnter);
+    cell.addEventListener("dragover", dragOver);
+    cell.addEventListener("dragleave", dragLeave);
+    cell.addEventListener("drop", drop);
+  });
+
+  autoPlaceButton.addEventListener("click", () => {
+    game.player.gameboard.autoPopulateBoard();
+    displayShips(game.player.gameboard);
+    ships.forEach(ship => ship.style.display = "none");
+    console.log(game.player.gameboard.board);
+  })
 };
