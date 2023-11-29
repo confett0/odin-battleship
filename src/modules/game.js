@@ -22,7 +22,9 @@ export const game = {
   },
 
   start() {
+    displayGameboard("player");
     displayGameboard("computer");
+    displayShips(this.player.gameboard);
     this.computer.gameboard.autoPopulateBoard();
     addEventListeners();
   },
