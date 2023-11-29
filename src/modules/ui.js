@@ -90,7 +90,7 @@ export const openWinnerModal = (winner) => {
   newGameButton.addEventListener("click", () => {
     winnerModal.classList.remove("visible");
     game.resetGame();
-    game.init();
+    game.setUp();
   })
 }
 

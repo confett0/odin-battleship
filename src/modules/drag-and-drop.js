@@ -6,6 +6,7 @@ export const dragAndDrop = () => {
   const ships = document.querySelectorAll(".drag-ship");
   const cells = document.querySelectorAll(".cell");
   const autoPlaceButton = document.querySelector(".autoplace-button");
+  const startButton = document.querySelector(".start-game-button");
   
   ships.forEach((ship) => ship.addEventListener("dragstart", dragStart));
 
@@ -63,17 +64,11 @@ export const dragAndDrop = () => {
     });
   }
 
-  cells.forEach((cell) => {
+ cells.forEach((cell) => {
     cell.addEventListener("dragenter", dragEnter);
     cell.addEventListener("dragover", dragOver);
     cell.addEventListener("dragleave", dragLeave);
     cell.addEventListener("drop", drop);
   });
 
-  autoPlaceButton.addEventListener("click", () => {
-    game.player.gameboard.autoPopulateBoard();
-    displayShips(game.player.gameboard);
-    ships.forEach(ship => ship.style.display = "none");
-    console.log(game.player.gameboard.board);
-  })
 };

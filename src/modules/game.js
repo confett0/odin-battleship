@@ -1,5 +1,4 @@
 import { Player, Computer } from "./player";
-import { dragAndDrop } from "./drag-and-drop";
 import {
   displayGameboards,
   displayShips,
@@ -8,6 +7,7 @@ import {
   displayMessages,
   openWinnerModal,
 } from "./ui";
+import { dragAndDrop } from "./drag-and-drop";
 
 export const game = {
   player: new Player("player"),

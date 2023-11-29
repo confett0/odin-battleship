@@ -104,9 +104,18 @@ export class Gameboard {
     }
   }
 
-  // Check if all ships have been sunk.
   allSunk() {
     return this.ships.every((ship) => ship.sunk === true);
+  }
+
+  resetBoard() {
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        this.board[i][j].ship = null;
+      }
+    }
+    this.ships = [];
+    this.occupiedCells = [];
   }
 
   autoPopulateBoard() {
@@ -124,10 +133,8 @@ export class Gameboard {
       const result = this.placeShip(ship, startCoords, orientation);
 
       if (result) {
-        // If the placement was successful, move on to the next ship
         autoPlaceShip(ships, index + 1);
       } else {
-        // If placement failed, try again for the same ship
         autoPlaceShip(ships, index);
       }
     };

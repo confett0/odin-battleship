@@ -218,11 +218,6 @@ button:hover {
     margin-top: 30px;
 }
 
-.autoplace-button {
-    background-color: var(--yellow);
-    margin: 15px auto 0;
-}
-
 .drag-over {
     background-color: var(--seafoam);
 }
@@ -244,6 +239,7 @@ button:hover {
 .disabled-button {
     background-color: var(--grey);
     border: 2px solid #57737f;
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
     color: #57737f;
     cursor: default;
 }
