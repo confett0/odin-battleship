@@ -1,11 +1,10 @@
 import { game } from "./game";
-import { displayShips } from "./ui";
+import { displayBattleUI } from "./ui";
 
 export const dragAndDrop = () => {
   
   const ships = document.querySelectorAll(".drag-ship");
   const cells = document.querySelectorAll(".cell");
-  const autoPlaceButton = document.querySelector(".autoplace-button");
   const startButton = document.querySelector(".start-game-button");
   
   ships.forEach((ship) => ship.addEventListener("dragstart", dragStart));
@@ -45,9 +44,10 @@ export const dragAndDrop = () => {
 
     const changeOrientation = () => shipOrientation = (shipOrientation === "horizontal") ? "vertical" : "horizontal";
 
-    game.player.gameboard.removeShip(ship);
+    game.player.gameboard.removeShip(ship); // remove ship from array in case of repositioning
+
     const result = game.player.gameboard.placeShip(ship, [coordX, coordY], shipOrientation);
-    if (result) {
+    if (result) { // check if ship position is legal
       e.target.appendChild(draggableShip);
       draggableShip.classList.add("positioned-ship");
     }
@@ -62,6 +62,16 @@ export const dragAndDrop = () => {
         changeOrientation();
       }
     });
+
+    // If all ships are positioned, activate Start Game button
+
+    if (document.querySelectorAll(".draggable-ship-container .drag-ship").length === 0) {
+      startButton.classList.remove("disabled-button");
+      startButton.addEventListener("click", () => {
+        displayBattleUI();
+        game.start();
+      });
+    }
   }
 
  cells.forEach((cell) => {

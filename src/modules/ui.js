@@ -13,10 +13,20 @@ const createBoardCells = (gameboard) => {
   }
 };
 
-export const displayGameboards = () => {
-  const gameboards = document.querySelectorAll(".gameboard");
-  gameboards.forEach((board) => createBoardCells(board));
+export const displayGameboard = (playerBoard) => {
+  const gameboard = document.querySelector(`.${playerBoard}-board`);
+  createBoardCells(gameboard);
 };
+
+export const displayBattleUI = () => {
+  const computerBoardContainer = document.querySelector(".computer-wrap");
+  const messageBoard = document.querySelector(".message-board");
+  const dragAndDropContainer = document.querySelector(".drag-and-drop-wrap");
+
+  computerBoardContainer.classList.remove("hidden");
+  messageBoard.classList.remove("hidden");
+  dragAndDropContainer.classList.add("hidden");
+}
 
 export const displayShips = (gameboard) => {
   for (const occupiedCells of gameboard.occupiedCells) {

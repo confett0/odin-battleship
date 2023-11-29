@@ -1,6 +1,6 @@
 import { Player, Computer } from "./player";
 import {
-  displayGameboards,
+  displayGameboard,
   displayShips,
   addEventListeners,
   updateBoards,
@@ -16,11 +16,12 @@ export const game = {
   isGameOn: true,
 
   setUp() {
-    displayGameboards();
+    displayGameboard("player");
     dragAndDrop();
   },
 
   start() {
+    displayGameboard("computer");
     this.computer.gameboard.autoPopulateBoard();
     addEventListeners();
   },
