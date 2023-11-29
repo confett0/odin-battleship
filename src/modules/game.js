@@ -6,7 +6,8 @@ import {
   updateBoards,
   displayMessages,
   openWinnerModal,
-  toggleUI
+  toggleUI,
+  createDraggableShips
 } from "./ui";
 import { dragAndDrop } from "./drag-and-drop";
 
@@ -18,13 +19,14 @@ export const game = {
 
   setUp() {
     displayGameboard("player");
+    createDraggableShips();
     dragAndDrop();
   },
 
   start() {
     displayGameboard("player");
     displayGameboard("computer");
-    displayShips(this.player.gameboard);
+    displayShips();
     this.computer.gameboard.autoPopulateBoard();
     addEventListeners();
   },

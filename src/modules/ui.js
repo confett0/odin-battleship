@@ -1,4 +1,5 @@
 import { game } from "./game";
+import { Ship } from "./ship";
 
 const createBoardCells = (gameboard) => {
   gameboard.innerHTML = "";
@@ -18,6 +19,38 @@ export const displayGameboard = (playerBoard) => {
   createBoardCells(gameboard);
 };
 
+export const createDraggableShips = () => {
+  const shipList = game.player.gameboard.shipList;
+  const container = document.querySelector(".draggable-ship-container");
+  container.innerHTML = "";
+
+  const createShip = (ship) => {
+    const shipWrap = document.createElement("div");
+    const shipName = document.createElement("h3");
+    const dragShip = document.createElement("div");
+
+
+    shipWrap.setAttribute("class", "ship-wrap");
+    shipName.textContent = ship.name;
+    dragShip.setAttribute("class", "drag-ship");
+    dragShip.setAttribute("id", ship.name);
+    dragShip.setAttribute("data-length", ship.length);
+    dragShip.setAttribute("draggable", "true");
+
+    for (let i = 0; i < ship.length; i++) {
+      const dragShipCell = document.createElement("div");
+      dragShipCell.classList.add("drag-ship-cell", "cell");
+      dragShip.appendChild(dragShipCell);
+    }
+
+    shipWrap.append(shipName, dragShip);
+    container.appendChild(shipWrap);
+  }
+
+  shipList.map(ship => createShip(ship));
+  
+}
+
 export const toggleUI = () => { // switches from the drag and drop UI to the battle UI
   const computerBoardContainer = document.querySelector(".computer-wrap");
   const messageBoard = document.querySelector(".message-board");
@@ -28,15 +61,14 @@ export const toggleUI = () => { // switches from the drag and drop UI to the bat
   dragAndDropContainer.classList.toggle("hidden");
 }
 
-export const displayShips = (gameboard) => {
-  for (const occupiedCells of gameboard.occupiedCells) {
-    document
-      .querySelectorAll(
-        `.player-board [data-coord-x="${occupiedCells[0]}"][data-coord-y="${occupiedCells[1]}"]`
-      )
-      .forEach((cell) => {
-        cell.classList.add("has-ship");
-      });
+export const displayShips = () => {
+  const board = game.player.gameboard.board;
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      if (board[j][i].ship !== null) {
+        document.querySelector(`.player-board [data-coord-x="${j}"][data-coord-y="${i}"]`).classList.add("has-ship");
+      }
+    }
   }
 };
 
@@ -103,5 +135,3 @@ export const openWinnerModal = (winner) => {
     game.setUp();
   })
 }
-
-

@@ -20,7 +20,6 @@ export class Gameboard {
       { name: "Destroyer", length: 2 },
     ];
     this.ships = [];
-    this.occupiedCells = [];
     this.hitCells = [];
     this.missedCells = [];
   }
@@ -49,7 +48,6 @@ export class Gameboard {
       }
       for (let i = x; i < x + ship.length; i++) {
         this.board[i][y].ship = ship.name;
-        this.occupiedCells.push([i, y]);
       }
     }
 
@@ -61,7 +59,6 @@ export class Gameboard {
       }
       for (let i = y; i < y + ship.length; i++) {
         this.board[x][i].ship = ship.name;
-        this.occupiedCells.push([x, i]);
       }
     }
     return ship;
@@ -115,7 +112,6 @@ export class Gameboard {
       }
     }
     this.ships = [];
-    this.occupiedCells = [];
   }
 
   autoPopulateBoard() {
