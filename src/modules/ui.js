@@ -18,14 +18,14 @@ export const displayGameboard = (playerBoard) => {
   createBoardCells(gameboard);
 };
 
-export const displayBattleUI = () => {
+export const toggleUI = () => { // switches from the drag and drop UI to the battle UI
   const computerBoardContainer = document.querySelector(".computer-wrap");
   const messageBoard = document.querySelector(".message-board");
   const dragAndDropContainer = document.querySelector(".drag-and-drop-wrap");
 
-  computerBoardContainer.classList.remove("hidden");
-  messageBoard.classList.remove("hidden");
-  dragAndDropContainer.classList.add("hidden");
+  computerBoardContainer.classList.toggle("hidden");
+  messageBoard.classList.toggle("hidden");
+  dragAndDropContainer.classList.toggle("hidden");
 }
 
 export const displayShips = (gameboard) => {

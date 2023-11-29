@@ -6,6 +6,7 @@ import {
   updateBoards,
   displayMessages,
   openWinnerModal,
+  toggleUI
 } from "./ui";
 import { dragAndDrop } from "./drag-and-drop";
 
@@ -67,6 +68,7 @@ export const game = {
   },
 
   resetGame() {
+    toggleUI();
     this.player = new Player("player"),
     this.computer = new Computer("computer"),
     this.isGameOn = true;

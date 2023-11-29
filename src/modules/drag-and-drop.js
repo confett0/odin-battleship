@@ -1,5 +1,5 @@
 import { game } from "./game";
-import { displayBattleUI } from "./ui";
+import { toggleUI } from "./ui";
 
 export const dragAndDrop = () => {
   
@@ -68,7 +68,7 @@ export const dragAndDrop = () => {
     if (document.querySelectorAll(".draggable-ship-container .drag-ship").length === 0) {
       startButton.classList.remove("disabled-button");
       startButton.addEventListener("click", () => {
-        displayBattleUI();
+        toggleUI();
         game.start();
       });
     }
