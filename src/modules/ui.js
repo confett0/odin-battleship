@@ -67,6 +67,8 @@ export const displayShips = () => {
     for (let j = 0; j < 10; j++) {
       if (board[j][i].ship !== null) {
         document.querySelector(`.player-board [data-coord-x="${j}"][data-coord-y="${i}"]`).classList.add("has-ship");
+      } else {
+        document.querySelector(`.player-board [data-coord-x="${j}"][data-coord-y="${i}"]`).classList.remove("has-ship");
       }
     }
   }

@@ -1,5 +1,5 @@
 import { game } from "./game";
-import { toggleUI } from "./ui";
+import { toggleUI, displayShips } from "./ui";
 
 export const dragAndDrop = () => {
   
@@ -80,5 +80,12 @@ export const dragAndDrop = () => {
     cell.addEventListener("dragleave", dragLeave);
     cell.addEventListener("drop", drop);
   });
+
+  const autoPlaceButton = document.querySelector(".auto-place");
+  autoPlaceButton.addEventListener("click", () => {
+    game.player.gameboard.resetBoard();
+    game.player.gameboard.autoPopulateBoard();
+    displayShips();
+  })
 
 };

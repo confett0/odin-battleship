@@ -137,5 +137,6 @@ export class Gameboard {
 
     this.shipList.forEach((ship) => this.createShip(ship.name, ship.length));
     autoPlaceShip(this.ships, 0); // Start placing ships with the first ship in the list
+    console.log(this.board);
   }
 }

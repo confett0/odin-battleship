@@ -30,5 +30,8 @@
     "style-loader": "^3.3.3",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "mobile-drag-drop": "^3.0.0-rc.0"
   }
 }
