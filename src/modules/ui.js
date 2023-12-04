@@ -54,7 +54,7 @@ export const createDraggableShips = () => {
 export const toggleUI = () => { // switches from the drag and drop UI to the battle UI
   const computerBoardContainer = document.querySelector(".computer-wrap");
   const messageBoard = document.querySelector(".message-board");
-  const dragAndDropContainer = document.querySelector(".drag-and-drop-wrap");
+  const dragAndDropContainer = document.querySelector(".drag-and-drop-container");
 
   computerBoardContainer.classList.toggle("hidden");
   messageBoard.classList.toggle("hidden");
