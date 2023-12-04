@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/confett0/odin-battleship/issues"
   },
-  "homepage": "https://github.com/confett0/odin-battleship",
+  "homepage": "http://confett0.github.io/odin-battleship",
   "devDependencies": {
     "@babel/core": "^7.23.2",
     "@babel/preset-env": "^7.23.2",
