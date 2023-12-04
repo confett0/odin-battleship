@@ -110,7 +110,7 @@ main {
     background: #fff;
     border: 2px solid #000;
     border-radius: 20%;
-    box-shadow: 1px 0px 0px rgba(0, 0, 0, 1);
+    box-shadow: 1px 0px 0px rgb(4, 3, 3);
     height: min(42px,8vw);
     position: relative;
     width: min(42px,8vw)
