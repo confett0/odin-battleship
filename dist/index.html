@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Battleship</title>
     <script src="main.js" defer></script>
-</head>
-<body>
-    <div id="content"></div>
-</body>
+  </head>
+
+  <body>
+    <header>
+      <h1 class="logo">Battleship</h1>
+    </header>
+    <main>
+      <div class="gameboard-wrap">
+        <div class="board-label player">Friendly Waters</div>
+        <div class="gameboard player-board"></div>
+      </div>
+      <div class="gameboard-wrap computer-wrap hidden">
+        <div class="board-label computer">Enemy Waters</div>
+        <div class="gameboard computer-board"></div>
+      </div>
+      <div>
+        <div class="drag-and-drop-wrap">
+          <div class="draggable-ship-container"></div>
+          <div class="instructions">
+            <img
+              src="https://github.com/confett0/odin-battleship/blob/main/src/images/lamp.png"
+              alt="instructions"
+              width="48px"
+              height="48px"
+            />
+            <p>
+              Drag and drop your ship on the gameboard. Click on the positioned
+              ship to rotate it.
+            </p>
+          </div>
+          <button type="button" class="auto-place">Auto-Place</button>
+        </div>
+        <button type="button" class="start-game-button disabled-button">
+            Start game
+          </button>
+      </div>
+    </main>
+    <div class="message-board hidden">Awaiting orders, admiral!</div>
+    <div class="winner-modal">
+      <div class="winner-modal-content">
+        <h2 class="winner-text">You win</h2>
+        <button type="button" class="new-game-button">Play again</button>
+      </div>
+    </div>
+  </body>
 </html>

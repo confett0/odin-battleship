@@ -1,4 +1,4 @@
-const Ship = require('../ship');
+import { Ship } from "../ship";
 
 describe('Ship', () => {
 
@@ -12,8 +12,16 @@ describe('Ship', () => {
         const ship = new Ship(2);
         ship.hit();
         ship.hit();
-        ship.isSunk();
+        // ship.isSunk();
         expect(ship.sunk).toBe(true);
+      });
+
+      it('should not update the isSunk state if the ship is not sunk', () => {
+        const ship = new Ship(3);
+        ship.hit();
+        ship.hit();
+        // ship.isSunk();
+        expect(ship.sunk).toBe(false);
       });
   });
 

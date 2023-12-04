@@ -1,3 +1,4 @@
 import './style.css';
+import { game } from './modules/game';
 
-document.getElementById("content").innerHTML = "Hello";
+game.setUp();

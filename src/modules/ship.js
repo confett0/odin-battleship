@@ -1,5 +1,6 @@
-class Ship {
-    constructor(length) {
+export class Ship {
+    constructor(length, name) {
+        this.name = name;
         this.length = length;
         this.hitsReceived = 0;
         this.sunk = false;
@@ -7,6 +8,7 @@ class Ship {
 
     hit() {
         this.hitsReceived++;
+        this.isSunk();
     }
 
     isSunk() {
@@ -15,5 +17,3 @@ class Ship {
         }
     }
 }
-
-module.exports = Ship;
